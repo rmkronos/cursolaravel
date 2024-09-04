@@ -19,3 +19,15 @@ php artisan serve
 
 http://127.0.0.1:8000
 
+## Usar os arquivos do github
+
+git clone --branch <branch name> <url do repositório>
+
+## verificar a breach
+
+git branch
+
+## Baixar as atualizações
+
+git pull
+
