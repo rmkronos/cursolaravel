@@ -38,5 +38,10 @@ git branch
 
 git pull
 
-## 
+## Criar view
+php artisan make:view nome
+
+php artisan make:view courses/show
+
+
 

@@ -41,7 +41,7 @@ class CourseController extends Controller
     /**
      * Edite o curso
      */
-    public function edit(string $id)
+    public function edit()
     {
         return view('courses.edit');
     }
