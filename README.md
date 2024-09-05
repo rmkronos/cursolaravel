@@ -19,9 +19,16 @@ php artisan serve
 
 http://127.0.0.1:8000
 
+## Criar migration
+
+php artisan make:migration create_name_table
+
+## Executar as migration
+php artisan migrate
+
 ## Usar os arquivos do github
 
-git clone --branch <branch name> <url do repositório>
+git clone --branch <branch name> <url do repositório> .
 
 ## verificar a breach
 
@@ -30,4 +37,6 @@ git branch
 ## Baixar as atualizações
 
 git pull
+
+## 
 
