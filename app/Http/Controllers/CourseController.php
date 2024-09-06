@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class CourseController extends Controller
 {
@@ -12,7 +13,18 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('courses.index');
+        // Recuperar registro do banco de dados
+
+        // $courses = Course::orderBy('id', 'desc')->get(); //ou Course::all()
+        //Outro exemplo
+        //$courses = Course::where('id', 1000)->get(); //ou Course::all()
+
+        $courses = Course::orderBy('id', 'DESC')->simplePaginate(5);
+        
+        return view(
+            'courses.index', 
+            ['courses' => $courses]
+        );
     }
 
      /**

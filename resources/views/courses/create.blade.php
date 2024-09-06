@@ -6,7 +6,7 @@
     <hr>
     <a href="{{route('courses.index')}}">Listar</a><br>
 
-    <div class="card">
+    <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header">Novo Curso</div>
         <div class="card-body">
             {{-- <div class="card-title text-center">Cadastrar</div> --}}
