@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -27,7 +28,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        dd('Cadastrar no banco de dados');
+        //'Cadastrar no banco de dados'
+        Course::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('courses.create')->with('success','Curso cadastrado com sucesso!');
     }
 
     /**

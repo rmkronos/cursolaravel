@@ -17,8 +17,8 @@ return new class extends Migration
             $table->collation('utf8mb4_unicode_ci');
             $table->id();
             $table->string('name', length:200);
-            $table->string('email', length:250);
-            $table->integer('id_situacao');
+            // $table->string('email', length:250);
+            // $table->integer('id_situacao');
             $table->timestamps();
         });
     }
