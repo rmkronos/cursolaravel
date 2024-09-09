@@ -20,9 +20,9 @@ class CourseController extends Controller
         //$courses = Course::where('id', 1000)->get(); //ou Course::all()
 
         $courses = Course::orderBy('id', 'DESC')->simplePaginate(5);
-        
+
         return view(
-            'courses.index', 
+            'courses.index',
             ['courses' => $courses]
         );
     }
@@ -51,25 +51,39 @@ class CourseController extends Controller
     /**
      * Visualizar o curso
      */
-    public function show()
+    public function show(Request $request)
     {
-        return view('courses.show');
+
+        $course = Course::where('id', $request->course )->first();
+
+        return view('courses.show',
+            ['course' => $course]
+        );
     }
 
     /**
      * Edite o curso
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('courses.edit');
+        $course = Course::where('id', $request->course)->first();
+        return view('courses.edit', [
+            'course'=> $course
+        ]);
     }
 
     /**
      * Editar no banco de dados
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        dd('Editar no banco de dados');
+
+        $course = Course::find($id);
+        $course->update($request->all());
+
+        return redirect()->route('courses.index')->with('success', 'Curso alterado com sucesso!');
+
+
     }
 
     /**
