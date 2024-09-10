@@ -89,8 +89,11 @@ class CourseController extends Controller
     /**
      * Remove do banco de dados
      */
-    public function destroy(string $id)
+    public function destroy(Course $course)
     {
-        dd('Excluir do banco de dados');
+        $course->delete();
+       
+        return redirect()->route('courses.index')->with('success', 'Resitro deletado com sucesso');
+        
     }
 }

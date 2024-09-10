@@ -24,9 +24,17 @@
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
                         <td>{{\Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s')}}</td>
-                        <td>
-                            <a href="{{ route('courses.show', ['course'=> $value->id ]) }}" class="btn btn-outline-success">Visualizar</a>
-                            <a href="{{ route('courses.edit', ['course'=> $value->id ]) }}" class="btn btn-outline-warning">Editar</a>
+                        <td>                            
+                            <div class="d-flex justify-content-end">
+                                <a href="{{ route('courses.show', ['course'=> $value->id ]) }}" class="btn btn-outline-success">Visualizar</a>
+                                <a href="{{ route('courses.edit', ['course'=> $value->id ]) }}" class="btn btn-outline-warning">Editar</a>
+                                <form action="{{ route('courses.destroy', ['course'=> $value->id] )}}" method="POST">
+                                @csrf     
+                                @method('delete')
+                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Deseja deletar esse registro?')">Deletar</button>
+                                </form>
+                            
+                            </div>
                         </td>
                     </tr>
                     @empty
