@@ -77,7 +77,8 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //ou Request $request, Course $course
+        //$course->update(['name'=>$request->name, 'price'=>$request->price])
         $course = Course::find($id);
         $course->update($request->all());
 
@@ -92,8 +93,8 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-       
+
         return redirect()->route('courses.index')->with('success', 'Resitro deletado com sucesso');
-        
+
     }
 }

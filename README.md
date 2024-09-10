@@ -23,6 +23,10 @@ http://127.0.0.1:8000
 
 php artisan make:migration create_name_table
 
+## Adicionar campo na migration
+
+php artisan make:migration alter_tabela_add_campo_table
+
 ## Executar as migration
 php artisan migrate
 
@@ -42,6 +46,14 @@ git pull
 php artisan make:view nome
 
 php artisan make:view courses/show
+
+## Criando as seeds
+php artisan db:seed
+
+## Rollback da migrate
+php artisan migrate:rollback
+
+
 
 
 

@@ -10,20 +10,21 @@
         <div class="card-header">Lista</div>
 
         @if (session('success'))
-                
+
         <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
             <strong>{{session('success')}}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-            
+
         @endif
-        
+
         <div class="card-body">
             <table class="table table-striped table-hover">
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Curso</th>
+                    <th scope="col">Preço</th>
                     <th scope="col">Data</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -33,17 +34,18 @@
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
+                        <td>R$ {{ number_format($value->price, 2, ',', '.') }}</td>
                         <td>{{\Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s')}}</td>
-                        <td>                            
+                        <td>
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('courses.show', ['course'=> $value->id ]) }}" class="btn btn-outline-success">Visualizar</a>
                                 <a href="{{ route('courses.edit', ['course'=> $value->id ]) }}" class="btn btn-outline-warning">Editar</a>
                                 <form action="{{ route('courses.destroy', ['course'=> $value->id] )}}" method="POST">
-                                @csrf     
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Deseja deletar esse registro?')">Deletar</button>
                                 </form>
-                            
+
                             </div>
                         </td>
                     </tr>
