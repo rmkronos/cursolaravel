@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -38,12 +39,19 @@ class CourseController extends Controller
     /**
      * Salvar o curso
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
+        //Valida os campos do form
+        $request->validated();
+
         //'Cadastrar no banco de dados'
-        Course::create([
-            'name' => $request->name,
-        ]);
+        // Course::create([
+        //     'name' => $request->name,
+        //     'primce' => $request->price,
+        // ]);
+
+        //Ou
+        Course::create($request->all());
 
         return redirect()->route('courses.create')->with('success','Curso cadastrado com sucesso!');
     }
@@ -75,10 +83,15 @@ class CourseController extends Controller
     /**
      * Editar no banco de dados
      */
-    public function update(Request $request, $id)
+    public function update(CourseRequest $request, $id)
     {
         //ou Request $request, Course $course
         //$course->update(['name'=>$request->name, 'price'=>$request->price])
+
+        //Validacao do form
+
+        $request->validated();
+
         $course = Course::find($id);
         $course->update($request->all());
 

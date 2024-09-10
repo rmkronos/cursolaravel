@@ -19,6 +19,18 @@
 
             @endif
 
+            @if ($errors->any())
+
+                @foreach ($errors->all() as $error)
+
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                        <strong>{{ $error }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                @endforeach
+            @endif
+
             <form action="{{route('courses.update', ['course'=> $course->id ])}}" method="POST">
                 @csrf
                 @method('PUT')

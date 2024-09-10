@@ -53,6 +53,9 @@ php artisan db:seed
 ## Rollback da migrate
 php artisan migrate:rollback
 
+## Criando a validação do formulário pelo Request
+php artisan make:request tabelaRequest
+
 
 
 
