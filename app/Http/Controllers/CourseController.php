@@ -53,7 +53,7 @@ class CourseController extends Controller
         //Ou
         Course::create($request->all());
 
-        return redirect()->route('courses.create')->with('success','Curso cadastrado com sucesso!');
+        return redirect()->route('courses.index')->with('success','Curso cadastrado com sucesso!');
     }
 
     /**

@@ -7,7 +7,7 @@
     <a href="{{route('courses.index')}}">Listar</a>
     <a href="{{ route('courses.edit', ['course' => $course->id ]) }}">Editar</a><br>
 
-
+    <x-alert />
 
     <dl class="row">
         <dt class="col-sm-3">Código</dt>

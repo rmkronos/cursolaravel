@@ -56,6 +56,10 @@ php artisan migrate:rollback
 ## Criando a validação do formulário pelo Request
 php artisan make:request tabelaRequest
 
+## Criando um componente na pasta de views
+php artisan make:component nomedocomponente --view
+
+
 
 
 

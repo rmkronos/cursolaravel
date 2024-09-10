@@ -32,6 +32,7 @@ class CourseRequest extends FormRequest
         return [
             'name.required' => 'Campo Nome do Curso é Obrigatório!',
             'price.required'=> 'Campo Preço é Obrigatório!',
+            // 'price.decimal'=> 'Campo preço deve ser do tipo numerico!',
             'price.max'=> 'Campo Preço máximo não pode ultrapassar a 10 caracteres!',
         ];
     }

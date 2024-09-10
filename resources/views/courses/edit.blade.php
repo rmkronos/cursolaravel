@@ -7,10 +7,10 @@
     <a href="{{route('courses.index')}}">Listar</a>
 
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <div class="card-header">Novo Curso</div>
+        <div class="card-header">Editar Curso</div>
         <div class="card-body">
             {{-- <div class="card-title text-center">Cadastrar</div> --}}
-            @if (session('success'))
+            {{-- @if (session('success'))
 
             <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                 <strong>{{session('success')}}</strong>
@@ -29,7 +29,10 @@
                     </div>
 
                 @endforeach
-            @endif
+            @endif --}}
+
+            {{-- Componente de mensagens do sistema --}}
+            <x-alert />
 
             <form action="{{route('courses.update', ['course'=> $course->id ])}}" method="POST">
                 @csrf
