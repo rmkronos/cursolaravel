@@ -4,7 +4,7 @@
 
     <h1>Editar Curso</h1>
     <hr>
-    <a href="{{route('courses.index')}}">Listar</a>
+    <a href="{{route('course.index')}}">Listar</a>
 
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header">Editar Curso</div>
@@ -34,7 +34,7 @@
             {{-- Componente de mensagens do sistema --}}
             <x-alert />
 
-            <form action="{{route('courses.update', ['course'=> $course->id ])}}" method="POST">
+            <form action="{{route('course.update', ['course'=> $course->id ])}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb3">

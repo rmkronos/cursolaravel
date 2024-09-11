@@ -1,11 +1,14 @@
+
+{{-- Informando o leyout --}}
 @extends('layouts.admin')
 
+{{-- Informando onde colocar no leyout --}}
 @section('content')
 
     <h1>Detalhe do Curso</h1>
     <hr>
-    <a href="{{route('courses.index')}}">Listar</a>
-    <a href="{{ route('courses.edit', ['course' => $course->id ]) }}">Editar</a><br>
+    <a href="{{route('course.index')}}">Listar</a>
+    <a href="{{ route('course.edit', ['course' => $course->id ]) }}">Editar</a><br>
 
     <x-alert />
 

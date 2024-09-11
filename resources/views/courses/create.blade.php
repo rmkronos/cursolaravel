@@ -4,7 +4,7 @@
 
     <h1>Cadastrar Cursos</h1>
     <hr>
-    <a href="{{route('courses.index')}}">Listar</a><br>
+    <a href="{{route('course.index')}}">Listar</a><br>
 
     <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card-header">Novo Curso</div>
@@ -14,7 +14,7 @@
             {{-- Componente de mensagens do sistema --}}
             <x-alert />
 
-            <form action="{{route('courses.store')}}" method="POST">
+            <form action="{{route('course.store')}}" method="POST">
                 @csrf
                 @method('POST')
                 <div class="mb-3">

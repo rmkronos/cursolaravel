@@ -14,4 +14,9 @@ class Course extends Model
 
     protected $fillable = ['name','price'];
 
+    //Criar o relacionamento entre um para muitos
+    public function classe()
+    {
+        return $this->hasMany(Classe::class);
+    }
 }
