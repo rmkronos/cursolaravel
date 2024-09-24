@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClasseRequest;
 use App\Models\Classe;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -24,11 +25,13 @@ class ClasseController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(ClasseRequest $request){
 
-       $lastOrder = Classe::where('course_id', $request->course_id)->orderBy('order_classe', 'DESC')->first();
+        //Validacao dos campos do form, lembrando que se algum campo não estiver na ClasseRequest deverá ser adicionado o Request para poder carregar o campo
 
-    //    dd($lastOrder);
+        $request->validated();
+
+        $lastOrder = Classe::where('course_id', $request->course_id)->orderBy('order_classe', 'DESC')->first();
 
         if($lastOrder =='' || $lastOrder == 'null'){
             $lastOrder = 1;
@@ -36,6 +39,7 @@ class ClasseController extends Controller
             $lastOrder = $lastOrder->order_classe + 1;
         }
 
+        //ou $lastOrder ?  $lastOrder->order_classe + 1 : 1
 
         Classe::create([
             'name' => $request->name,
@@ -43,8 +47,6 @@ class ClasseController extends Controller
             'order_classe'=> $lastOrder ,
             'course_id' => $request->course_id
         ]);
-
-        //Classe::create($request->all());
 
         return redirect()->route('classe.index',['course'=>$request->course_id])->with('success','Aula cadastrada com sucesso!');
 

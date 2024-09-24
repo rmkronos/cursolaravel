@@ -107,7 +107,7 @@ class CourseController extends Controller
     {
         $course->delete();
 
-        return redirect()->route('courses.index')->with('success', 'Resitro deletado com sucesso');
+        return redirect()->route('course.index')->with('success', 'Resitro deletado com sucesso');
 
     }
 }

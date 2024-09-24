@@ -26,12 +26,17 @@
             </div>
 
             <div class="mb-3">
+                <label for="name" class="form-label">Nome do curso</label>
+                <input type="text" class="form-control" id="nome_curso" name="nome_curso" value="{{$course->name}}" disabled>
+            </div>
+
+            <div class="mb-3">
                 <label for="name" class="form-label">Aula</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nome da Aula" value="{{old('name')}}" required>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Descrição</label>
-                <textarea class="form-control" name="description" id="description" rows="5" >{{ old('description') }}</textarea>
+                <textarea class="form-control" name="description" id="description" rows="5" required>{{ old('description') }}</textarea>
             </div>
 
             <p class="text-center"><button type="submit" id="btn_cadastrar" value="Cadastrar" class="btn btn-outline-success">Cadastrar</button></p>

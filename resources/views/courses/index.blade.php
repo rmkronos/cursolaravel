@@ -20,7 +20,7 @@
                     <th scope="col">Curso</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Data</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" class="text-center">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                         <td>{{$value->name}}</td>
                         <td>R$ {{ number_format($value->price, 2, ',', '.') }}</td>
                         <td>{{\Carbon\Carbon::parse($value->created_at)->format('d/m/Y H:i:s')}}</td>
-                        <td>
+                        {{-- <td>
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('classe.index', ['course'=> $value->id ]) }}" class="btn btn-outline-success">Aulas</a>
                                 <a href="{{ route('course.show', ['course'=> $value->id ]) }}" class="btn btn-outline-success">Visualizar</a>
@@ -42,6 +42,25 @@
                                 </form>
 
                             </div>
+                        </td> --}}
+                        <td class="text-center">
+                                {{-- <ul class="navbar-nav"> --}}
+                                    <div class="dropdown">
+                                        <a href="#" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a href="{{ route('classe.index', ['course'=> $value->id ]) }}" class="dropdown-item">Aulas</a>
+                                            <a href="{{ route('course.show', ['course'=> $value->id ]) }}" class="dropdown-item">Visualizar</a>
+                                            <a href="{{ route('course.edit', ['course'=> $value->id ]) }}" class="dropdown-item">Editar</a>
+                                            <form action="{{ route('course.destroy', ['course'=> $value->id] )}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" onclick="return confirm('Deseja deletar esse registro?')" class="dropdown-item">Deletar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {{-- </ul> --}}
                         </td>
                     </tr>
                     @empty
